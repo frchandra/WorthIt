@@ -8,11 +8,16 @@ using WorthIt.Models;
 namespace WorthIt.Data
 {
     public class ApplicationDbContext : DbContext
+
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option): base(option)
         {
 
         }
         public DbSet<Category> Category { get; set; }
+
+        public DbSet<Product> Product { get; set; }
+
+
     }
 }

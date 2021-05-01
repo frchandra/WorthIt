@@ -55,7 +55,7 @@ namespace WorthIt.Controllers
                 return NotFound();
 
             }
-            var obj = _db.Category.Find(id);
+             var obj = _db.Category.Find(id);
             if (obj == null)
             {
                 return NotFound();
