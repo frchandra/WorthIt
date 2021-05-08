@@ -26,13 +26,15 @@ namespace WorthIt.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Product> objslList = _db.Product;
-            foreach(var obj in objslList)
-            {
-                obj.Category = _db.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
-            };
+            IEnumerable<Product> objList = _db.Product.Include(u => u.Category);
 
-            return View(objslList);
+            //foreach(var obj in objList)
+            //{
+            //    obj.Category = _db.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
+            //    obj.ApplicationType = _db.ApplicationType.FirstOrDefault(u => u.Id == obj.ApplicationTypeId);
+            //};
+
+            return View(objList);
         }
         
         // GET - UPSERT
@@ -164,34 +166,42 @@ namespace WorthIt.Controllers
             if (id == null || id == 0)
             {
                 return NotFound();
-
             }
-            var obj = _db.Category.Find(id);
+            Product product = _db.Product.Include(u => u.Category).Include(u => u.Category).FirstOrDefault(u => u.Id == id);
+            //product.Category = _db.Category.Find(product.CategoryId);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+
+        //POST - Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var obj = _db.Product.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
 
+            string upload = _webHostEnvironment.WebRootPath + WC.ImagePath;
+            var oldFile = Path.Combine(upload, obj.Image);
 
-            return View(obj);
-        }
-
-        //POST - Delete
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? id)
-        {
-            var obj = _db.Category.Find(id);
-            
-            if(obj == null)
+            if (System.IO.File.Exists(oldFile))
             {
-                return NotFound();
+                System.IO.File.Delete(oldFile);
             }
-                _db.Category.Remove(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            
-            
+
+
+            _db.Product.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
+
 
         }
 

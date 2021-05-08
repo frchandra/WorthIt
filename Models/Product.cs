@@ -14,6 +14,8 @@ namespace WorthIt.Models
 
         [Required]
         public string Name { get; set; }
+        [Display(Name="Short Description")]
+        public string ShortDesc { get; set; }
         public string Description { get; set; }
 
         [Range(1, int.MaxValue)]

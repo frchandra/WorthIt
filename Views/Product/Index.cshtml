@@ -7,7 +7,7 @@
             <h2 class="text-primary">Product List</h2>
         </div>
         <div class="col-6 text-right">
-            <a  asp-action="Upsert" class="btn btn-primary">
+            <a asp-action="Upsert" class="btn btn-primary">
                 <i class="fas fa-plus"></i> &nbsp; Create New Product
             </a>
 
@@ -27,33 +27,39 @@
                     <th>
                         Price
                     </th>
+                    <th>
+                        Category
+                    </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var obj in Model)
                 {
-                    <tr>
-                        <td widht="50%">
-                            @obj.Name
-                        </td>
-                        <td widht="30%">
-                            @obj.Price
-                        </td>
-                        <td class="text-center">
-                            <div class="w-75 btn-group" role="group">
-                                <a  asp-route-Id="@obj.Id" asp-action="Upsert" class="btn btn-warning mx-2">
-                                    Edit
+                <tr>
+                    <td widht="30%">
+                        @obj.Name
+                    </td>
+                    <td widht="25%">
+                        @obj.Price
+                    </td>
+                    <td widht="25%">
+                        @obj.Category.Name
+                    </td>
+                    <td class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-route-Id="@obj.Id" asp-action="Upsert" class="btn btn-warning mx-2">
+                                Edit
 
-                                </a>
-                                <a  asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
-                                    Delete
-                                </a>
-                            </div>
+                            </a>
+                            <a asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
+                                Delete
+                            </a>
+                        </div>
 
-                        </td>
+                    </td>
 
-                    </tr>
+                </tr>
                 }
             </tbody>
         </table>

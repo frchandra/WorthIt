@@ -435,3 +435,6 @@ D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Categ
 D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Category\Delete.cshtml.g.cs
 D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
 D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Product\Upsert.cshtml.g.cs
+D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Product\Delete.cshtml.g.cs
+D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Shared\_IndividualProductCard.cshtml.g.cs
+D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
