@@ -3,4 +3,4 @@ Tugas Praktikum PBO
 
 
 ![UML](/uml.png)
-(/Database.jpg)
+![Database](/https://github.com/frchandra/WorthIt/blob/main/Database.jpg)
