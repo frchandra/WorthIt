@@ -17,6 +17,21 @@ namespace WorthIt.Models
         [Display(Name="Short Description")]
         public string ShortDesc { get; set; }
         public string Description { get; set; }
+        public string Material { get; set; }
+        public int DisplaySize { get; set; }
+        public string DisplayType { get; set; }
+        public string OS { get; set; }
+        public string CPU { get; set; }
+        public int Benchmark { get; set; }
+        public int RAM { get; set; }
+        public int Storage { get; set; }
+        public int MainCamera { get; set; }
+        public int FrontCamera { get; set; }
+        public string CameraFeature { get; set; }
+        public int BatteryCapacity { get; set; }
+        public double ChargingSpeed { get; set; }
+        public bool AudioJack { get; set; }
+        public bool WirelesCharging { get; set; }
 
         [Range(1, int.MaxValue)]
         public double Price { get; set; }

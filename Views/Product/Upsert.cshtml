@@ -21,6 +21,7 @@
 
         <div class="row">
             <div class="col-8">
+
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="Product.Name"></label>
@@ -53,6 +54,160 @@
 
                 <div class="form-group row">
                     <div class="col-4">
+                        <label asp-for="Product.Material"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.Material" class="form-control" />
+                        <span asp-validation-for="Product.Material" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.DisplaySize"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.DisplaySize" class="form-control" />
+                        <span asp-validation-for="Product.DisplaySize" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.DisplayType"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.DisplayType" class="form-control" />
+                        <span asp-validation-for="Product.DisplayType" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.OS"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.OS" class="form-control" />
+                        <span asp-validation-for="Product.OS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.CPU"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.CPU" class="form-control" />
+                        <span asp-validation-for="Product.CPU" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.Benchmark"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.Benchmark" class="form-control" />
+                        <span asp-validation-for="Product.Benchmark" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.RAM"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.RAM" class="form-control" />
+                        <span asp-validation-for="Product.RAM" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.Storage"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.Storage" class="form-control" />
+                        <span asp-validation-for="Product.Storage" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.MainCamera"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.MainCamera" class="form-control" />
+                        <span asp-validation-for="Product.MainCamera" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.FrontCamera"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.FrontCamera" class="form-control" />
+                        <span asp-validation-for="Product.FrontCamera" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.CameraFeature"></label>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="Product.CameraFeature" class="form-control summernote"></textarea>
+                        <span asp-validation-for="Product.CameraFeature" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.BatteryCapacity"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.BatteryCapacity" class="form-control" />
+                        <span asp-validation-for="Product.BatteryCapacity" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.ChargingSpeed"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.ChargingSpeed" class="form-control" />
+                        <span asp-validation-for="Product.ChargingSpeed" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.AudioJack"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.AudioJack" class="form-control" />
+                        <span asp-validation-for="Product.AudioJack" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.WirelesCharging"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Product.WirelesCharging" class="form-control" />
+                        <span asp-validation-for="Product.WirelesCharging" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-4">
                         <label asp-for="Product.Description"></label>
                     </div>
                     <div class="col-8">
@@ -66,9 +221,7 @@
                         Image
                     </div>
                     <div class="col-8">
-
                         <input type="file" name="files" id="uploadBox" multiple class="form-control" />
-
                     </div>
                 </div>
 
@@ -82,7 +235,6 @@
                         </select>
                         <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
                     </div>
-
                 </div>
 
 
@@ -100,7 +252,6 @@
                                 //Create
                                 <input type="submit" onclick="return validateInput()" class="btn btn-primary w-100" value="Create" />
                             }
-
                         </div>
                         <div class="col">
                             <a asp-action="Index" class="btn btn-success w-100">
@@ -108,13 +259,10 @@
                             </a>
                         </div>
                     </div>
-
                 </div>
 
-
-
-
             </div>
+
             <div class="col-4">
                 @*keep this empty*@
                 @if (Model.Product.Id != 0)
@@ -122,6 +270,7 @@
                     <img src="@WC.ImagePath@Model.Product.Image" width="100%" style="border-radius:5px; border:1px solid #bbb" />
                 }
             </div>
+
         </div>
 
     </div>

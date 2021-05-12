@@ -6,10 +6,18 @@
         <button class="btn btn-dark filter-button" data-filter="all">All</button>
         @foreach (var obj in Model.Categories)
         {
-            <button class="btn btn-outline-secondary filter-button" data-filter="@obj.Name.Replace(' ','_')">
+            <button class="btn btn-outline-secondary filter-button " data-filter="@obj.Name.ToLower().Replace(' ','_')">
                 @obj.Name
             </button>
         }
+
+        <input id="myInput" type="text" placeholder="Search..">
+
+        @*<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 search-textbox" type="search" placeholder="Search" aria-label="Search">
+        </form>*@
+
+
     </div>
     <br />
     <div class="row">
@@ -22,20 +30,37 @@
 </div>
 
 @section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function(){
-    $(".filter-button").click(function(){
-        var value = $(this).attr('data-filter');
-        if(value == "all")
-        {
-            $('.filter').show('1000');
-        }
-        else
-        {
-            $(".filter").not('.'+value).hide('3000');
-            $('.filter').filter('.'+value).show('3000');
-        }
-    });
-});
+        $(document).ready(function(){
+            $(".filter-button").click(function(){
+                var value = $(this).attr('data-filter');
+                if(value == "all")
+                {
+                    $('.filter').show('1000');
+                }
+                else
+                {
+                    $(".filter").not('.'+value).hide('3000');
+                    $('.filter').filter('.'+value).show('3000');
+                }
+            });
+        });
+
+
+        $(document).ready(function () {
+            $("input").on("keyup", function () {
+                var key = $(this).val().replace(/\s+/g, '_').toLocaleLowerCase();
+                console.log(key);
+                if (key == "") {                    
+                    $('.filter').show('1000');                    
+                }                
+                else {
+                    $('.filter').filter('[class*=' + key + ']').show('3000');
+                    $(".filter").not('[class*=' + key + ']').hide('3000');
+                                       
+                }
+            });
+        });
     </script>
 }

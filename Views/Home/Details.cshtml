@@ -5,6 +5,7 @@
         <input asp-for="@Model.Product.Id" hidden />
         <div class="container backgroundWhite pt-4">
             <div class="card" style="border:1px solid #000000; ">
+
                 <div class="card-header bg-dark text-light ml-0 row container" style="border-radius: 0px;">
                     <div class="col-12 col-md-6">
                         <h1 class="text-white">@Model.Product.Name</h1>
@@ -13,28 +14,49 @@
                         <h1 class="text-warning"> @((Model.Product.Price).ToString("c"))</h1>
                     </div>
                 </div>
+
                 <div class="card-body">
                     <div class="container rounded p-2">
                         <div class="row">
+
                             <div class="col-12 col-lg-4 p-1 text-center">
                                 <img src="@WC.ImagePath@Model.Product.Image" width="100%" class="rounded" />
                             </div>
+
                             <div class="col-12 col-lg-8">
                                 <div class="row pl-3">
-
                                     <div class="col-12">
                                         <span class="badge p-3 border" style="background-color:lavenderblush">@Model.Product.Category.Name</span>
-                                       
+
                                         <h3 class="text-success"></h3>
 
+                                        <p class="text-secondary">Short Description: @Html.Raw(Model.Product.ShortDesc)</p>
+                                        <p class="text-secondary" >Material : @Html.Raw(Model.Product.Material)</p>
+                                        <p class="text-secondary" >Display Size : @Html.Raw(Model.Product.DisplaySize)</p>
+                                        <p class="text-secondary" >Display Type : @Html.Raw(Model.Product.DisplayType)</p>
+                                        <p class="text-secondary" >OS : @Html.Raw(Model.Product.OS)</p>
+                                        <p class="text-secondary" >CPU : @Html.Raw(Model.Product.CPU)</p>
+                                        <p class="text-secondary" >Benchmark : @Html.Raw(Model.Product.Benchmark)</p>
+                                        <p class="text-secondary" >RAM : @Html.Raw(Model.Product.RAM)</p>
+                                        <p class="text-secondary" >Storage : @Html.Raw(Model.Product.Storage)</p>
+                                        <p class="text-secondary" >Main Camera : @Html.Raw(Model.Product.MainCamera)</p>
+                                        <p class="text-secondary" >Front Camera : @Html.Raw(Model.Product.FrontCamera)</p>
+                                        <p class="text-secondary" >Camera Features : @Html.Raw(Model.Product.CameraFeature)</p>
+                                        <p class="text-secondary" >Battery Capacity : @Html.Raw(Model.Product.BatteryCapacity)</p>
+                                        <p class="text-secondary" >Charging Speed : 0% to 100% in @Html.Raw(Model.Product.ChargingSpeed) hour</p>
+                                        <p class="text-secondary" >Audio Jack : @Html.Raw(Model.Product.AudioJack)</p>
+                                        <p class="text-secondary" >Wireless Charging : @Html.Raw(Model.Product.WirelesCharging)</p>
                                         <p class="text-secondary">@Html.Raw(Model.Product.Description) </p>
-                                    </div>
+                                        
 
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+
                 <div class="card-footer bg-dark">
                     <div class="row">
                         <div class="col-12 col-md-6 pb-1 ">
@@ -47,13 +69,12 @@
                             }
                             else
                             {
-
-
                                 <button type="submit" asp-route-id="@Model.Product.Id" class="btn btn-info form-control btn-lg" style="height:50px;">Add to Cart</button>
                             }
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </form>

@@ -160,7 +160,7 @@ namespace WorthIt.Controllers
 
 
 
-        //Get-Delete
+        //GET - DELETE
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -177,7 +177,7 @@ namespace WorthIt.Controllers
             return View(product);
         }
 
-        //POST - Delete
+        //POST - DELETE
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
