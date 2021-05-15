@@ -43,7 +43,17 @@
                                         <p class="text-secondary" >Front Camera : @Html.Raw(Model.Product.FrontCamera)</p>
                                         <p class="text-secondary" >Camera Features : @Html.Raw(Model.Product.CameraFeature)</p>
                                         <p class="text-secondary" >Battery Capacity : @Html.Raw(Model.Product.BatteryCapacity)</p>
-                                        <p class="text-secondary" >Charging Speed : 0% to 100% in @Html.Raw(Model.Product.ChargingSpeed) hour</p>
+                                        @{ 
+                                            double chargingSpeed = Model.Product.ChargingSpeed;
+                                            if (Model.Product.ChargingSpeed / 1000 >= 1)
+                                                chargingSpeed = Model.Product.ChargingSpeed / 1000;
+                                            else if (Model.Product.ChargingSpeed / 100 >= 1)
+                                                chargingSpeed = Model.Product.ChargingSpeed / 100;
+                                            else if (Model.Product.ChargingSpeed / 10 >= 1)
+                                                chargingSpeed = Model.Product.ChargingSpeed / 10;
+                                        }
+
+                                        <p class="text-secondary" >Charging Speed : 0% to 100% in @chargingSpeed hour</p>
                                         <p class="text-secondary" >Audio Jack : @Html.Raw(Model.Product.AudioJack)</p>
                                         <p class="text-secondary" >Wireless Charging : @Html.Raw(Model.Product.WirelesCharging)</p>
                                         <p class="text-secondary">@Html.Raw(Model.Product.Description) </p>

@@ -28,7 +28,7 @@ namespace WorthIt.Models
         public int MainCamera { get; set; }
         public int FrontCamera { get; set; }
         public string CameraFeature { get; set; }
-        public int BatteryCapacity { get; set; }
+        public int BatteryCapacity { get; set; }        
         public double ChargingSpeed { get; set; }
         public bool AudioJack { get; set; }
         public bool WirelesCharging { get; set; }

@@ -60,16 +60,10 @@ namespace WorthIt.Controllers
                     Text = i.Name,
                     Value = i.Id.ToString()
                 }),
-                //ApplicationTypeSelectList = _db.ApplicationType.Select(i => new SelectListItem
-                //{
-                //    Text = i.Name,
-                //    Value = i.Id.ToString()
-                //})
             };
 
             if (id == null)
-            {
-                //this is for create
+            {                
                 return View(productVM);
             }
             else

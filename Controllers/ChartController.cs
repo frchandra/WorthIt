@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,13 @@ namespace WorthIt.Controllers
             _db = db;
         }
 
+        //HomeVM homeVM = new HomeVM()
+        //{
+        //    Products = _db.Product.Include(u => u.Category),
+        //    Categories = _db.Category
+        //};
+        //    return View(homeVM);
+
         public IActionResult Index()
         {
             List<Chart> chartList = new List<Chart>();
@@ -27,7 +35,7 @@ namespace WorthIt.Controllers
                 chartList = HttpContext.Session.Get<List<Chart>>(WC.SessionChart);
             }
             List<int> prodInChart = chartList.Select(i => i.ProductId).ToList();
-            IEnumerable<Product> prodList = _db.Product.Where(u => prodInChart.Contains(u.Id));
+            IEnumerable<Product> prodList = _db.Product.Where(u => prodInChart.Contains(u.Id)).Include(u => u.Category);
             return View(prodList);
         }
 
