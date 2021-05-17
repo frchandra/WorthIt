@@ -1,81 +1,927 @@
 ﻿@model IEnumerable<Product>
 
+<style>
+    td {
+        text-align: center;
+    }
+
+    body {
+        background-color: #F5F5F5 ;
+    }
+
+
+    .card-group.card-group-scroll {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+        .card-group.card-group-scroll > .card {
+            flex-basis: 35%;
+        }
+
+    ::-webkit-scrollbar {
+        width: 30px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        border-radius: 5px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #E7E7E7;
+        border-radius: 10px;
+    }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E7E7E7;
+        }
+
+    .card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 3px 3px;
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+        -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+        -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+        background-color: #eee;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 39px
+    }
+
+    .c-details span {
+        font-weight: 300;
+        font-size: 13px
+    }
+
+    .badge span {
+        background-color: #fffbec;
+        width: 60px;
+        height: 25px;
+        padding-bottom: 3px;
+        border-radius: 5px;
+        display: flex;
+        color: #fed85d;
+        justify-content: center;
+        align-items: center
+    }
+
+
+    .progress {
+        height: 10px;
+        border-radius: 10px;
+    }
+
+    .progress div {        
+        border-radius: 10px;
+        -webkit-transition: width 4s ease;
+        transition: width 4s ease;
+    }
+
+    .performance .progress div {
+        background-color: #73BAD3;
+    }
+
+    .battery .progress div {
+        background-color: #469D8B;
+    }
+
+    .camera .progress div {
+        background-color: #EA8933;
+    }
+
+    .screen .progress div {
+        background-color: #E8AE3C;
+    }
+
+    .text1 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #a5aec0;
+    }
+
+    #list-example a {
+        transition: .2s ease;
+    }
+
+    .cards__index {
+        width: 100%;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        max-width: 820px;
+    }
+
+    .card__img {
+        
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 275px;
+        margin-top: -40px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    .card__index {
+        margin-right: 25px;
+        transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+        background-color: #fff;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 10px 10px 10px -7px rgba(0, 0, 0,0.1);
+    }
+
+
+    .card__info {
+        z-index: 1;
+        background-color: #fff;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        padding: 16px 24px 24px 24px;
+        text-align: center;
+    }
+
+    .card__category {
+        font-family: 'Raleway', sans-serif;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #868686;
+    }
+
+    .card__title {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    }
+
+
+
+    .card__harga {
+        font-size: 16px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 600;
+        text-decoration: none;
+        color: #AD7D52;
+    }
+
+
+
+
+    .card:hover .card__info {
+        background-color: transparent;
+        position: relative;
+    }
+</style>
+
 @if (Model.Count() > 0)
 {
+    <div id="list-example" class="list-group icon-bar" style="position:fixed; left:0px; top:200px">
+        <a class="list-group-item list-group-item-action ml-lg-n2" href="#list-item-1"><span>Performance</span></a>
+        <a class="list-group-item list-group-item-action ml-lg-n2" href="#list-item-2"><span>Battery</span></a>
+        <a class="list-group-item list-group-item-action ml-lg-n2" href="#list-item-3"><span>Camera</span></a>
+        <a class="list-group-item list-group-item-action ml-lg-n2" href="#list-item-4"><span>Camera Review</span></a>
+        <a class="list-group-item list-group-item-action ml-lg-n2" href="#list-item-5"><span>Display</span></a>
+        <a class="list-group-item list-group-item-action ml-lg-n2" href="#list-item-6"><span>Features</span></a>
+        <a class="list-group-item list-group-item-action ml-lg-n2" href="#list-item-7"><span>Overall Review</span></a>
+        <a class="list-group-item list-group-item-action ml-lg-n2" href="#list-item-8"><span>Summary</span></a>
+    </div>
 
 
-    <form method="post">
+    <div class="container">
+        <div class="card-group card-group-scroll">
+            @foreach (var obj in Model)
+            {
+                <div class="col-lg-4 col-md-6 pb-4 filter ">
+ 
+                    <div class="card__index" >
+
+                        <a asp-action="Remove" asp-route-id="@obj.Id"><i class=" fas fa-times" style=" position:relative; left:80%;  margin:20px; height:30px; width:30px; color:lightgrey"></i></a>
+                        <img class="card__img" src="@WC.ImagePath@obj.Image"></img>
+
+                        <div class="card__info">
+                            <span class="card__category"> @obj.Category.Name</span>
+                            <h3 class="card__title">@obj.Name</h3>
+                            <span class="card__harga">
+                                @string.Format("{0:c0}", obj.Price)
+                                <br>
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                </div>
+
+            }
+
+
+        </div>
+    </div>
+    <div>
+
+
         <br />
-        <div class="backgroundWhiteBorder">
-            <div class="container row">
-                <div class="col -8">
-                    <div class="card mt-4">
-                        <div class="card-header bg-dark text-light ml-0 row container">
-                            <div class="col-6">
-                                <i class="fa fa-shopping-cart"></i> &nbsp;
-                                Shopping Cart
-                            </div>
-                            <div class="col-6 text-right">
-                                <a asp-action="Index" asp-controller="Home" class="btn btn-outline-info btn-sm">Continue Shopping</a>
+        <br />
+        <div class="Judul"><h3 id="list-item-1">Performance</h3></div>
+        <hr />
+        <div class="container performance">
+            <div class="row">
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="fas fa-microchip" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">CPU</h5>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class=" d-none d-lg-block">
-                                <div class="row" style="color:#821f3d">
-                                    <div class="col-lg-2">
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.CPU</span>
                                     </div>
-                                    <div class="col-12 col-lg-7">
-                                        Product Details
-                                    </div>
-                                    <div class="col-12 col-lg-2">
-                                        Price per sqft
-                                    </div>
-                                    <div class="col-6 col-sm-4 col-lg-1">
-                                    </div>
-                                </div>
+
+                                }
                             </div>
-
-                            <hr />
-                            @foreach (var obj in Model)
-                            {
-                                <div class="row h-100">
-                                    <div class="col-4 col-md-2 text-center py-2">
-                                        <img src="@WC.ImagePath@obj.Image" class="rounded" width="100%" />
-                                    </div>
-                                    <div class="col-8 col-lg-7">
-                                        <h5>@obj.Name</h5>
-                                        <div style="font-size:11px;">@obj.ShortDesc</div>
-                                    </div>
-                                    <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
-                                        <span style="font-size:17px;"> $@obj.Price</span>/ sqft
-
-                                    </div>
-                                    <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
-                                        <a asp-action="Remove" asp-route-id="@obj.Id" class="btn btn-outline-danger">
-                                            @*<i class="fas fa-trash"></i>*@
-                                            Buang
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr />
-                            }
                         </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-6 col-md-3 offset-md-9">
-                                    <button type="submit" class="btn btn-success form-control ">
-                                        <span>Continue</span>
-                                    </button>
-                                </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="fas fa-memory" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">RAM</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    int percent = (obj.RAM * 100 / 20);
+                                    string strPercent = String.Concat(percent.ToString(), "%");
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.RAM Gigabyte</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="20"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="far fa-hdd" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Storage</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    int percent = (obj.Storage * 100 / 520);
+                                    string strPercent = String.Concat(percent.ToString(), "%");
+
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.Storage Gigabyte</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="520"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="far fa-chart-bar" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Benchmark</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    double percent = ((double)obj.Benchmark * 100 / (double)1000);
+                                    string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.Benchmark</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="1000"></div>
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="fas fa-percentage"  style="color:#868686"></i>  </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Benchmark/Price Ratio</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    double percent = ((double)obj.Benchmark * 100000 / (double)obj.Price);
+                                    percent = Math.Round(percent, 2);
+                                    string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @percent</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="1000"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"><i class="fas fa-cog"  style="color:#868686"></i></div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">OS</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.OS</span>
+                                    </div>
+
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <br /><br />
+
         </div>
-    </form>
+
+        <br />
+        <br />
+        <div class="Judul"><h3 id="list-item-2">Battery</h3></div>
+        <hr />
+        <div class="container battery">
+            <div class="row">
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"><i class="fas fa-battery-full"  style="color:#868686"></i></div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Battery Capacity</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    double percent = ((double)obj.BatteryCapacity * 100 / (double)10000);
+                                    string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.BatteryCapacity mAH</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="10000"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="fas fa-bolt" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Charging Speed</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    double chargingSpeed = obj.ChargingSpeed;
+                                    if (obj.ChargingSpeed / 1000 >= 1)
+                                        chargingSpeed = obj.ChargingSpeed / 1000;
+                                    else if (obj.ChargingSpeed / 100 >= 1)
+                                        chargingSpeed = obj.ChargingSpeed / 100;
+                                    else if (obj.ChargingSpeed / 10 >= 1)
+                                        chargingSpeed = obj.ChargingSpeed / 10;
+
+                                    double percent = (((double)3.25 - (double)chargingSpeed) * 100 / (double)3.25);
+                                    string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : 0%-100% in @chargingSpeed hours</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="3.25"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+
+
+
+
+        </div>
+
+        <br />
+        <br />
+        <div class="Judul"><h3 id="list-item-3">Camera</h3></div>
+        <hr />
+        <div class="container camera">
+            <div class="row">
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"><i class="fas fa-camera" style="color:#868686"></i></div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Main Camera</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    double percent = ((double)obj.MainCamera * 100 / (double)200);
+                                    string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.MainCamera Megapixel</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="200"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"><i class="fas fa-camera" style="color:#868686"></i></div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Front Camera</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    double percent = ((double)obj.FrontCamera * 100 / (double)200);
+                                    string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.FrontCamera Megapixel</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="200"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+
+
+
+
+        </div>
+
+        <br />
+        <br />
+        <div class="Judul"><h3 id="list-item-4">Camera Decsription</h3></div>
+        <hr />
+        <div class="row">
+            @foreach (var obj in Model)
+            {
+
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"><i class="fas fa-camera" style="color:#868686"></i></div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">@obj.Name</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                <br />
+                                <div contenteditable="true"> @Html.Raw(obj.CameraFeature)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <br />
+        <br />
+        <div class="Judul"><h3 id="list-item-5">Display</h3></div>
+        <hr />
+        <div class="container screen">
+
+            <div class="row">
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px">  <i class="fas fa-mobile-alt" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Display Size</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    double percent = ((double)obj.DisplaySize * 100 / (double)15);
+                                    string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.DisplaySize Inch</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="15"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="fas fa-mobile-alt" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Display Type</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.DisplayType</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br /><br />
+
+
+
+
+        </div>
+
+        <br />
+        <br />
+        <div class="Judul"><h3 id="list-item-6">Features</h3></div>
+        <hr />
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="far fa-circle" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Audio Jack</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.AudioJack</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="fas fa-bolt" style="color:#868686"></i></div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Wireless Charging</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.WirelesCharging</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px">  <i class="fas fa-atom" style="color:#868686"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">Material</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @foreach (var obj in Model)
+                                {
+                                    <div class="mt-3">
+                                        <span class="text1"> @obj.Name : @obj.Material</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br /><br />
+
+
+
+
+        </div>
+
+        <br />
+        <br />
+        <div class="Judul"><h3 id="list-item-7">Description</h3></div>
+        <hr />
+        <div class="row">
+            @foreach (var obj in Model)
+            {
+                
+                <div class="col-lg-4 mt-2">
+                    <div class="card  ">
+                        <div class="d-flex flex-row align-items-center" style="margin-bottom: -15px;">
+                            <div class="icon" style="margin:20px 20px"> <i class="fas fa-paperclip" style="color:#868686"></i>  </div>
+                            <div class="ms-2 c-details">
+                                <h5 class="mb-0">@obj.Name</h5>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="card-body pt-0 " style="margin-bottom: 15px;">
+                                <hr>
+                                @obj.ShortDesc
+                                <br />
+                                <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#@obj.Name.Replace(' ','_')">
+                                    View More
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="@obj.Name.Replace(' ','_')" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">@obj.Name</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @Html.Raw(obj.Description)
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <br />
+        <br />
+        <div class="Judul"><h3 id="list-item-8">Summary</h3></div>
+        <hr />
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">RAM</th>
+                    <th scope="col">Storage</th>
+                    <th scope="col">Bencmark</th>
+                    <th scope="col">Perf/Price</th>
+                    <th scope="col">Battery Cap.</th>
+                    <th scope="col">Charging Spd.</th>
+                    <th scope="col">Main Cam</th>
+                    <th scope="col">Front Cam</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+
+                    double minPrice = Model.Min(a => a.Price);
+                    int maxRam = Model.Max(a => a.RAM);
+                    int maxStorage = Model.Max(a => a.Storage);
+                    int maxBench = Model.Max(a => a.Benchmark);
+                    double maxRatio = Model.Max(a => (a.Benchmark / a.Price));
+                    int maxBatCap = Model.Max(a => a.BatteryCapacity);
+                    double maxCrgSpd = Model.Max(a => a.ChargingSpeed);
+                    int maxMainCam = Model.Max(a => a.MainCamera);
+                    int maxFrontCam = Model.Max(a => a.FrontCamera);
+
+                    foreach (var obj in Model)
+                    {
+                        <tr>
+                            <th scope="row">@obj.Name</th>
+                            @if (obj.Price == minPrice)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+
+                            @if (obj.RAM == maxRam)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+
+                            @if (obj.Storage == maxStorage)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+
+
+                            @if (obj.Benchmark == maxBench)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+
+                            @if (obj.Benchmark / obj.Price == maxRatio)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+
+                            @if (obj.BatteryCapacity == maxBatCap)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+
+                            @if (obj.ChargingSpeed == maxCrgSpd)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+
+                            @if (obj.MainCamera == maxMainCam)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+
+                            @if (obj.FrontCamera == maxFrontCam)
+                            {
+                                <td>winer</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+                        </tr>
+                    }
+
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+    <br/><br />
 }
-@*else
+else
 {
-    <p>Please add items to cart.</p>
-}*@
+    <p>Please add items to comparison.</p>
+}
+
+@section Scripts{
+
+    <script>
+
+        $(document).ready(function () {
+            $('.progress .progress-bar').css("width",
+                function () {
+                    return $(this).attr("myanimate");
+                }
+            )
+        });
+
+
+
+    </script>
+}

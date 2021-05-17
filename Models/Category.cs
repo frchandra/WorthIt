@@ -11,11 +11,12 @@ namespace WorthIt.Models
     {
         [Key]
         public int Id { get; set; }
-       
+
+        [DisplayName("Brand Name")]
         [Required]
         public string Name { get; set; }
         
-        [DisplayName("Display Order")]
+        [DisplayName("Brand Number")]
         [Required]
         [Range(1, int.MaxValue,ErrorMessage ="Display Order For Category Must Be Greater Than 0")]
         public int DisplayOrder { get; set; }

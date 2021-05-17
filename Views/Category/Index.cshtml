@@ -4,11 +4,11 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Category List</h2>
+            <h2 class="text-primary">Brand List</h2>
         </div>
         <div class="col-6 text-right">
             <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-                Create New Category
+                <i class="fas fa-plus"></i> &nbsp; New Brand
             </a>
            
         </div>
@@ -22,10 +22,10 @@
             <thead>
                 <tr>
                     <th>
-                        Category Name
+                        Brand Name
                     </th>
                     <th>
-                        Display Order
+                        Brand Number
                     </th>
                     <th></th>
                 </tr>
@@ -43,11 +43,11 @@
                     <td class="text-center">
                         <div class="w-75 btn-group" role="group">
                             <a asp-controller="Category" asp-route-Id="@obj.Id"asp-action="Edit" class="btn btn-warning mx-2">
-                                Edit
+                                <i class="far fa-edit"></i> &nbsp; Edit
 
                             </a>
                             <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
-                                Delete
+                                <i class="far fa-trash-alt"></i> &nbsp; Delete
                             </a>
                         </div>
                         

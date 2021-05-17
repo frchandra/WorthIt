@@ -60,16 +60,10 @@ namespace WorthIt.Controllers
                     Text = i.Name,
                     Value = i.Id.ToString()
                 }),
-                //ApplicationTypeSelectList = _db.ApplicationType.Select(i => new SelectListItem
-                //{
-                //    Text = i.Name,
-                //    Value = i.Id.ToString()
-                //})
             };
 
             if (id == null)
-            {
-                //this is for create
+            {                
                 return View(productVM);
             }
             else
@@ -160,7 +154,7 @@ namespace WorthIt.Controllers
 
 
 
-        //Get-Delete
+        //GET - DELETE
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -177,7 +171,7 @@ namespace WorthIt.Controllers
             return View(product);
         }
 
-        //POST - Delete
+        //POST - DELETE
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)

@@ -1,40 +1,234 @@
 ﻿@model WorthIt.Models.ViewModels.DetailsVM
 
+    <style>
+        
+        #test html {
+            display: grid;
+            min-height: 100%;
+        }
+
+        #test body {
+            display: grid;
+            background: #eeeeee;
+            font-family: font, sans-serif;
+            text-transform: uppercase;
+            min-height: 100% !important;
+            height: auto;
+        }
+
+        #test .card {
+            position: relative;
+            height: 100%;
+            min-height: 100% !important;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            -webkit-box-shadow: 5px 5px 5px 0px rgba(82, 63, 105, 0.1);
+        }
+
+        #test .container {
+            width: 840px;
+            background: white;
+            
+            border-radius: 10px;
+            
+        }
+
+        #test p {
+            font-size: 0.8em;
+            color: #4E4E4E;
+            letter-spacing: 1px;
+        }
+
+
+        #test h1 {
+            font-size: 1.8em;
+            
+            margin-top: -5px;
+            color: #e0d145;
+        }
+
+        #test h3 {
+            color: rgb(196, 156, 104);
+            margin-top: -5px;
+        }
+
+
+
+        #test img {
+            width: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-top: 25px;
+            height: 400px;
+            margin-left:60px;
+        }
+
+
+
+
+
+        #test .product {
+            top: 4%;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 100px;
+        }
+
+        #test .desc {
+            text-transform: none;
+            letter-spacing: 0;
+            margin-bottom: 17px;
+            color: dark;
+            font-size: 1.em;
+            line-height: 1.6em;
+            margin-right: 25px;
+            text-align: justify;
+            color: #a8a8a8;
+        }
+
+        #test button {
+            background: darken(light, 10%);
+            padding: 10px;
+            display: inline-block;
+            outline: 0;
+            border: 0;
+            margin: -1px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            background-color: #4f6370;
+            cursor: pointer;
+            position:relative;
+            margin-bottom:-100px
+        }
+
+        #test button:hover {
+            background: #73bad3;
+            transition: all .4s ease-in-out;
+        }
+    </style>
+
 <div class="">
-    <form method="post">        
+    <form method="post">
         <input asp-for="@Model.Product.Id" hidden />
-        <div class="container backgroundWhite pt-4">
-            <div class="card" style="border:1px solid #000000; ">
-                <div class="card-header bg-dark text-light ml-0 row container" style="border-radius: 0px;">
-                    <div class="col-12 col-md-6">
-                        <h1 class="text-white">@Model.Product.Name</h1>
-                    </div>
-                    <div class="col-12 col-md-6 text-md-right">
-                        <h1 class="text-warning"> @((Model.Product.Price).ToString("c"))</h1>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="container rounded p-2">
-                        <div class="row">
-                            <div class="col-12 col-lg-4 p-1 text-center">
-                                <img src="@WC.ImagePath@Model.Product.Image" width="100%" class="rounded" />
-                            </div>
-                            <div class="col-12 col-lg-8">
-                                <div class="row pl-3">
+        <div class="container" id="test">
+            <div class="card">
 
-                                    <div class="col-12">
-                                        <span class="badge p-3 border" style="background-color:lavenderblush">@Model.Product.Category.Name</span>
-                                       
-                                        <h3 class="text-success"></h3>
+                <div class="row">
+                    <div class="col-12 col-lg-6 ">
+                        <div class="images">
+                            <img src="@WC.ImagePath@Model.Product.Image" class="img-fluid" alt="Responsive image" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="product">
+                            <p>@Model.Product.Category.Name</p>
+                            <h1>@Model.Product.Name</h1>
+                            <h3>@string.Format("{0:c0}", Model.Product.Price)</h3>
+                            <div class="desc">
+                                <p class="text-secondary">Short Description : @Html.Raw(Model.Product.ShortDesc)</p>
+                                <p class="text-secondary">Material : @Html.Raw(Model.Product.Material)</p>
+                                <p class="text-secondary">Display Size : @Html.Raw(Model.Product.DisplaySize) inch</p>
+                                <p class="text-secondary">Display Type : @Html.Raw(Model.Product.DisplayType)</p>
+                                <p class="text-secondary">OS : @Html.Raw(Model.Product.OS)</p>
+                                <p class="text-secondary">CPU : @Html.Raw(Model.Product.CPU)</p>
+                                <p class="text-secondary">Benchmark : @Html.Raw(Model.Product.Benchmark)</p>
+                                <p class="text-secondary">RAM : @Html.Raw(Model.Product.RAM) Gigabyte</p>
+                                <p class="text-secondary">Storage : @Html.Raw(Model.Product.Storage) Gigabyte</p>
+                                <p class="text-secondary">Main Camera : @Html.Raw(Model.Product.MainCamera) Mega Pixel</p>
+                                <p class="text-secondary">Front Camera : @Html.Raw(Model.Product.FrontCamera) Mega Pixel</p>
+                                <p class="text-secondary">Camera Review : @Html.Raw(Model.Product.CameraFeature)</p>
+                                <p class="text-secondary">Battery Capacity : @Html.Raw(Model.Product.BatteryCapacity) mAH</p>
+                                @{
+                                    double chargingSpeed = Model.Product.ChargingSpeed;
+                                    if (Model.Product.ChargingSpeed / 1000 >= 1)
+                                        chargingSpeed = Model.Product.ChargingSpeed / 1000;
+                                    else if (Model.Product.ChargingSpeed / 100 >= 1)
+                                        chargingSpeed = Model.Product.ChargingSpeed / 100;
+                                    else if (Model.Product.ChargingSpeed / 10 >= 1)
+                                        chargingSpeed = Model.Product.ChargingSpeed / 10;
+                                }
 
-                                        <p class="text-secondary">@Html.Raw(Model.Product.Description) </p>
-                                    </div>
+                                <p class="text-secondary">Charging Speed : 0% to 100% in @chargingSpeed hour</p>
+                                <p class="text-secondary">Audio Jack : @Html.Raw(Model.Product.AudioJack)</p>
+                                <p class="text-secondary">Wireless Charging : @Html.Raw(Model.Product.WirelesCharging)</p>
+                                <p class="text-secondary">Overall Review: @Html.Raw(Model.Product.Description) </p>
+                                <div class="buttons">
+                                    <button class="like"><span>⎗</span></button>
+                                    <button class="add">Add to Comparison</button>
 
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
+
+
+
+
+            </div>
+
+        </div>
+        @*<div class="container backgroundWhite pt-4">
+            <div class="card" style="border:1px solid #000000; ">
+
+
+
+                <div class="card-body">
+                    <div class="container rounded p-2">
+                        <div class="row">
+
+                            <div class="col-12 col-lg-4 p-1 text-center">
+                                <img src="@WC.ImagePath@Model.Product.Image" width="100%" class="rounded" />
+                            </div>
+
+                            <div class="col-12 col-lg-8">
+                                <div class="row pl-3">
+                                    <div class="col-12">
+                                        <span class="badge p-3 border" style="background-color:lavenderblush">@Model.Product.Category.Name</span>
+
+                                        <h3 class="text-success"></h3>
+
+                                        <p class="text-secondary">Short Description : @Html.Raw(Model.Product.ShortDesc)</p>
+                                        <p class="text-secondary" >Material : @Html.Raw(Model.Product.Material)</p>
+                                        <p class="text-secondary" >Display Size : @Html.Raw(Model.Product.DisplaySize) inch</p>
+                                        <p class="text-secondary" >Display Type : @Html.Raw(Model.Product.DisplayType)</p>
+                                        <p class="text-secondary" >OS : @Html.Raw(Model.Product.OS)</p>
+                                        <p class="text-secondary" >CPU : @Html.Raw(Model.Product.CPU)</p>
+                                        <p class="text-secondary" >Benchmark : @Html.Raw(Model.Product.Benchmark)</p>
+                                        <p class="text-secondary" >RAM : @Html.Raw(Model.Product.RAM) Gigabyte</p>
+                                        <p class="text-secondary" >Storage : @Html.Raw(Model.Product.Storage) Gigabyte</p>
+                                        <p class="text-secondary" >Main Camera : @Html.Raw(Model.Product.MainCamera) Mega Pixel</p>
+                                        <p class="text-secondary" >Front Camera : @Html.Raw(Model.Product.FrontCamera) Mega Pixel</p>
+                                        <p class="text-secondary" >Camera Review : @Html.Raw(Model.Product.CameraFeature)</p>
+                                        <p class="text-secondary" >Battery Capacity : @Html.Raw(Model.Product.BatteryCapacity) mAH</p>
+                                        @{
+                                            double chargingSpeed = Model.Product.ChargingSpeed;
+                                            if (Model.Product.ChargingSpeed / 1000 >= 1)
+                                                chargingSpeed = Model.Product.ChargingSpeed / 1000;
+                                            else if (Model.Product.ChargingSpeed / 100 >= 1)
+                                                chargingSpeed = Model.Product.ChargingSpeed / 100;
+                                            else if (Model.Product.ChargingSpeed / 10 >= 1)
+                                                chargingSpeed = Model.Product.ChargingSpeed / 10;
+                                        }
+
+                                        <p class="text-secondary" >Charging Speed : 0% to 100% in @chargingSpeed hour</p>
+                                        <p class="text-secondary" >Audio Jack : @Html.Raw(Model.Product.AudioJack)</p>
+                                        <p class="text-secondary" >Wireless Charging : @Html.Raw(Model.Product.WirelesCharging)</p>
+                                        <p class="text-secondary">Overall Review: @Html.Raw(Model.Product.Description) </p>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card-footer bg-dark">
                     <div class="row">
                         <div class="col-12 col-md-6 pb-1 ">
@@ -47,14 +241,13 @@
                             }
                             else
                             {
-
-
                                 <button type="submit" asp-route-id="@Model.Product.Id" class="btn btn-info form-control btn-lg" style="height:50px;">Add to Cart</button>
                             }
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div>
+        </div>*@
     </form>
 </div>
