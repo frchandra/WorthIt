@@ -1,7 +1,7 @@
 ﻿@model WorthIt.Models.ViewModels.ProductVM
 
 @{
-    var title = "Create Product";
+    var title = "Add Smartphone";
 }
 
 
@@ -9,7 +9,7 @@
 
     @if (Model.Product.Id != 0)
     {
-        title = "Edit Product";
+        title = "Edit Smartphone";
         <input asp-for="Product.Id" hidden />
     }
 

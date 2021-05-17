@@ -4,11 +4,11 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Product List</h2>
+            <h2 class="text-primary">Smarthones List</h2>
         </div>
         <div class="col-6 text-right">
             <a asp-action="Upsert" class="btn btn-primary">
-                <i class="fas fa-plus"></i> &nbsp; Create New Product
+                <i class="fas fa-plus"></i> &nbsp; Add New Smarthone
             </a>
 
         </div>
@@ -22,13 +22,13 @@
             <thead>
                 <tr>
                     <th>
-                        Product Name
+                        Smartphone Name
                     </th>
                     <th>
                         Price
                     </th>
                     <th>
-                        Category
+                        Brand
                     </th>
                     <th></th>
                 </tr>
@@ -49,11 +49,11 @@
                     <td class="text-center">
                         <div class="w-75 btn-group" role="group">
                             <a asp-route-Id="@obj.Id" asp-action="Upsert" class="btn btn-warning mx-2">
-                                Edit
+                                <i class="far fa-edit"></i> &nbsp; Edit
 
                             </a>
                             <a asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
-                                Delete
+                                <i class="far fa-trash-alt"></i> &nbsp; Delete
                             </a>
                         </div>
 
