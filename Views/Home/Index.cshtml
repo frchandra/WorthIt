@@ -1,9 +1,32 @@
 ﻿@model WorthIt.Models.ViewModels.HomeVM
 
+<style>
+
+
+    .popup-btn a {
+        top: 600px;
+        position: fixed;
+        right: -57px;
+        z-index: 1000;
+        transform: rotate(-90deg);
+        background-color: red;
+        padding: 10px 20px 35px;
+        height: 0px;
+        background-color: #343a40;
+        color: #fff;
+    }
+
+        .popup-btn a:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ad7d52;
+        }
+</style>
+
 
 <div class="container">
     <div class="text-center">
-        <button class="btn btn-dark filter-button" data-filter="all">All</button>        
+        <button class="btn btn-dark filter-button" data-filter="all">All</button>
         @foreach (var obj in Model.Categories)
         {
             <button class="btn btn-outline-secondary filter-button " data-filter="@obj.Name.ToLower().Replace(' ','_')">
@@ -26,6 +49,35 @@
             <partial name="_IndividualProductCard" model="prod" />
             //display all product
         }
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-12">
+            <div class="popup-btn" data-toggle="modal" data-target="#aboutModal">
+                <a href="#id01">About This Page</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">About This Page</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur sit amet neque non rutrum. Vestibulum eu consectetur ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut at condimentum nulla, dignissim facilisis purus. Nulla facilisi. Nam augue purus, malesuada sed augue ut, ullamcorper viverra ex. Nulla non maximus leo. Mauris sit amet condimentum augue, ac condimentum nunc. Curabitur egestas ultrices eros quis aliquet. Curabitur sed turpis tristique, consectetur ex vitae, sollicitudin nibh. Maecenas ut est suscipit, feugiat libero viverra, ullamcorper nisl.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>                
+            </div>
+        </div>
     </div>
 </div>
 
