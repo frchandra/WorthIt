@@ -12,5 +12,6 @@
     <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_Layout.cshtml</WebStackScaffolding_LayoutPageFile>
     <_SelectedScaffolderID>IdentityScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Identity</_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>WorthIt1805 - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
