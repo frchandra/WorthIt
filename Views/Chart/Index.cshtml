@@ -218,7 +218,7 @@
                             <span class="card__category"> @obj.Category.Name</span>
                             <h3 class="card__title">@obj.Name</h3>
                             <span class="card__harga">
-                                @string.Format("{0:c0}", obj.Price)
+                                Rp @obj.Price
                                 <br>
                             </span>
 
@@ -343,13 +343,13 @@
                                 <hr>
                                 @foreach (var obj in Model)
                                 {
-                                    double percent = ((double)obj.Benchmark * 100 / (double)1000);
+                                    double percent = ((double)obj.Benchmark * 100 / (double)1000000);
                                     string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
                                     <div class="mt-3">
                                         <span class="text1"> @obj.Name : @obj.Benchmark</span>
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="1000"></div>
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="1000000"></div>
                                     </div>
 
                                 }
@@ -370,14 +370,14 @@
                                 <hr>
                                 @foreach (var obj in Model)
                                 {
-                                    double percent = ((double)obj.Benchmark * 100000 / (double)obj.Price);
+                                    double percent = ((double)obj.Benchmark * 250 / (double)obj.Price);
                                     percent = Math.Round(percent, 2);
                                     string strPercent = String.Concat(percent.ToString().Replace(',', '.'), "%");
                                     <div class="mt-3">
                                         <span class="text1"> @obj.Name : @percent</span>
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="1000"></div>
+                                        <div class="progress-bar" role="progressbar" style="width:0%" myanimate="@strPercent" aria-valuemax="100"></div>
                                     </div>
                                 }
                             </div>
