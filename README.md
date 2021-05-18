@@ -5,7 +5,7 @@ alamatweb:https://worthit1805.azurewebsites.net/
 Tugas Praktikum PBO
 
 
-![UML](/uml.png)
+![UML](/read me resouces/uml.png)
 <hr>
 
-![Database](/Database.jpg)
+![Database](/read me resouces/Database.jpg)
