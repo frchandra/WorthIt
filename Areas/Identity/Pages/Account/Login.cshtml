@@ -1,84 +1,221 @@
 ﻿@page
 @model LoginModel
 
-@{
-    ViewData["Title"] = "Log in";
-}
+    <style>
+        .port-image {
+            width: 100%;
+        }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe">
-                            <input asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Log in</button>
-                </div>
-                <div class="form-group">
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
-                </div>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to log in.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
+        .col-md-3 {
+            margin-bottom: 20px;
+        }
+
+        .each-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .each-item:hover .cap2, .each-item:hover .cap1 {
+                left: 0px;
             }
-        </section>
-    </div>
+
+        .cap1 {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            background: rgba(255, 255, 255, 0.5);
+            top: 0px;
+            left: -100%;
+            padding: 10px;
+            transition: all .5s;
+        }
+
+        .cap2 {
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            background: rgba(0, 178, 255, 0.5);
+            bottom: 0px;
+            left: 100%;
+            padding: 10px;
+            transition: all .5s;
+        }
+
+
+
+
+        .boxContainer {
+            display: table;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background: #0088cc;
+            padding: 2%;
+            display: table-cell;
+            text-align: center;
+            vertical-align: bottom;
+        }
+
+        #header {
+            position: relative;
+            min-height: 150px;
+        }
+
+        #header-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+
+
+        #logreg-forms {
+            width: 412px;
+            margin: 10vh auto;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        }
+
+            #logreg-forms form {
+                width: 100%;
+                max-width: 410px;
+                padding: 15px;
+                margin: auto;
+            }
+
+            #logreg-forms .form-control {
+                position: relative;
+                box-sizing: border-box;
+                height: auto;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+                #logreg-forms .form-control:focus {
+                    z-index: 2;
+                }
+
+            #logreg-forms .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            #logreg-forms .form-signin input[type="password"] {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            #logreg-forms .social-login {
+                width: 390px;
+                margin: 0 auto;
+                margin-bottom: 14px;
+            }
+
+            #logreg-forms .social-btn {
+                font-weight: 100;
+                color: white;
+                width: 190px;
+                font-size: 0.9rem;
+            }
+
+            #logreg-forms a {
+                display: block;
+                padding-top: 10px;
+                color: lightseagreen;
+            }
+
+        #logreg-form .lines {
+            width: 200px;
+            border: 1px solid red;
+        }
+
+
+        #logreg-forms button[type="submit"] {
+            margin-top: 10px;
+        }
+
+        .facebook-btn {
+            background-color: #3C589C;
+            color: white;
+        }
+
+
+        #logreg-forms .form-reset, #logreg-forms .form-signup {
+            display: none;
+        }
+
+            #logreg-forms .form-signup .social-btn {
+                width: 210px;
+            }
+
+            #logreg-forms .form-signup input {
+                margin-bottom: 2px;
+            }
+
+        .form-signup .social-login {
+            width: 210px !important;
+            margin: 0 auto;
+        }
+    </style>
+
+<div id="logreg-forms">
+    <h1 class="h3 mb-3 font-weight-normal text-info pt-4" style="text-align:center;">Sign In</h1>
+    @if ((Model.ExternalLogins?.Count ?? 0) == 0)
+    {
+        <div>
+            <p>
+                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                for details on setting up this ASP.NET application to support logging in via external services.
+            </p>
+        </div>
+    }
+    else
+    {
+        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+            <div>
+                <p>
+                    @foreach (var provider in Model.ExternalLogins)
+                    {
+                        @if (provider.Name.ToLower().Contains("facebook"))
+                        {
+                            <button type="submit" class="btn btn-block facebook-btn form-control"  name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-facebook-square"></i> &nbsp; @provider.DisplayName</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                        }
+
+                    }
+                </p>
+            </div>
+        </form>
+    }
+
+    <form id="account" method="post">
+        @if (Model.ExternalLogins?.Count > 0)
+        {
+            <p style="text-align: center">OR</p>
+        }
+
+        <input asp-for="Input.Email" placeholder="Email..." type="email" class="mb-1 form-control" />
+        <input asp-for="Input.Password" placeholder="Password..." type="password" class="form-control" />
+        <button type="submit" class="btn btn-success btn-block"><i class="fas fa-sign-in-alt "></i>  &nbsp; Log in</button>
+        <a id="forgot-password" asp-page="./ForgotPassword" class="pb-2 text-info">Forgot your password?</a>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-info text-white">register as a new user</a>
+
+
+
+    </form>
 </div>
+
+
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

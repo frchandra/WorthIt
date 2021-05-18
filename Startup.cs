@@ -40,6 +40,11 @@ namespace WorthIt
                 Options.Cookie.HttpOnly = true;
                 Options.Cookie.IsEssential = true;
             });
+            services.AddAuthentication().AddFacebook(Options =>
+            {
+                Options.AppId = "800817317208516";
+                Options.AppSecret = "244816cf8104b86a9eeae225e508d1ae";
+            });
             services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddControllersWithViews();
         }

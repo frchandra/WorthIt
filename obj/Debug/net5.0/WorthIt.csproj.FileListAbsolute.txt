@@ -484,3 +484,4 @@ D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Areas\Ident
 D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\Razor\Views\Chart\Index.cshtml.g.cs
 D:\Proyek\Programs\Program\oop_kuliah\WorthIt\obj\Debug\net5.0\WorthIt.csprojAssemblyReference.cache
+D:\Proyek\Programs\Program\oop_kuliah\WorthIt\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
