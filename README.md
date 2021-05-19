@@ -18,7 +18,7 @@ Worth it adalah platform yang menyediakan sarana untuk melakukan pembandingan pa
 
 * Buka laman dengan menggunakan link https://worthit1805.azurewebsites.net/
 Pada saat menggunakan aplikasi ini, terdapat 2 mode yang dapat digunakan yaitu mode admin dan mode pengguna.
-### Mode Pengguna
+#### Mode Pengguna
 Untuk menjalankan fitur aplikasi ini maka pengguna diminta untuk melakukan registrasi/login yang dapat dilakukan secara manual atau menggunakan facebook
 * Pilih menu registrasi / Login (jika sudah memiliki akun)
 * Jika sudah muncul tampilan seperti berikut maka isi data yang diperlukan untuk membuat akun
@@ -29,7 +29,7 @@ Untuk menjalankan fitur aplikasi ini maka pengguna diminta untuk melakukan regis
 * Jika sudah memilih hp yang dikomparasi, klick menu [see your comparison here] untuk menuju ke laman komparasi
 * Pada laman komparasi pengguna dapat melihat data perbandingan smartphone tsb. Untuk menghapus smartphone yang dibandingkan pengguna dapat menekan lambang X pada card berisi foto smartphone
 
-### Mode Admin
+#### Mode Admin
 * Login menggunakan akun admin 
 * Pada mode ini terdapat fitur tambahan pada menu content yang berisi menu untuk melakukan penambahan merk, smartphone, dan akun admin pada database
 * Untuk menambahkan merk, pilih menu content -> Brands, kemudian pilih button new Brand, kemudian isi data yang diperlukan dan klick button create untuk menambahkan
