@@ -30,7 +30,7 @@ Untuk menjalankan fitur aplikasi ini maka pengguna diminta untuk melakukan regis
 * Pada laman komparasi pengguna dapat melihat data perbandingan smartphone tsb. Untuk menghapus smartphone yang dibandingkan pengguna dapat menekan lambang X pada card berisi foto smartphone
 
 ### Mode Admin
-* Login menggunakan akun admin dengan : admin@gmail.com  password: Admin123!
+* Login menggunakan akun admin 
 * Pada mode ini terdapat fitur tambahan pada menu content yang berisi menu untuk melakukan penambahan merk, smartphone, dan akun admin pada database
 * Untuk menambahkan merk, pilih menu content -> Brands, kemudian pilih button new Brand, kemudian isi data yang diperlukan dan klick button create untuk menambahkan
 * Setelah menambahkan brand admin dapat melakukan edit dan menghapus brand yang ditambahkan dengan mengklick button edit atau delete
