@@ -41,6 +41,11 @@ Untuk menjalankan fitur aplikasi ini maka pengguna diminta untuk melakukan regis
 * Penambahan akun admin mirip dengan saat membuat akun pengguna namun akun yang dibuat pada menu ini dapat mengakses fitur-fitur diatas
 
 
+Jika masih mengalami kebingungan maka dapat melihat panduan dengan gambar di link berikut:
+
+https://github.com/frchandra/WorthIt/blob/main/Read%20me%20resouces/PanduanLengkapWorthIt.pdf
+
+
 Tugas Praktikum PBO
 
 
